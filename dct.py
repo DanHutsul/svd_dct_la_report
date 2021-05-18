@@ -83,24 +83,24 @@ for size in sizes:
     plt.title(title)
     plt.show()
 
-imgA = Image.open('ImageB.jpg')
-imgAcolor = imgA.convert('RGB')
-imgAgray = imgA.convert('LA')
+imgB = Image.open('ImageB.jpg')
+imgBcolor = imgB.convert('RGB')
+imgBgray = imgB.convert('LA')
 plt.figure(figsize=(9, 6))
-plt.imshow(imgAcolor)
+plt.imshow(imgBcolor)
 plt.figure(figsize=(9, 6))
-plt.imshow(imgAgray)
+plt.imshow(imgBgray)
 
-imgAgrayMat = np.array(list(imgAgray.getdata(band=0)), float)
-imgAgrayMat.shape = (imgAgray.size[1], imgAgray.size[0])
-imgAgrayMat = np.matrix(imgAgrayMat)
+imgBgrayMat = np.array(list(imgBgray.getdata(band=0)), float)
+imgBgrayMat.shape = (imgBgray.size[1], imgBgray.size[0])
+imgBgrayMat = np.matrix(imgBgrayMat)
 plt.figure(figsize=(9,6))
-plt.imshow(imgAgrayMat, cmap='gray')
+plt.imshow(imgBgrayMat, cmap='gray')
 
-width = imgAgray.size[1]
+width = imgBgray.size[1]
 
-dct_size = imgAgrayMat.shape[0]
-dct = get_2D_dct(imgAgrayMat)
+dct_size = imgBgrayMat.shape[0]
+dct = get_2D_dct(imgBgrayMat)
 reconstructed_images = [""]*(width)
 print(len(reconstructed_images))
 items = [int(width*0.05), int(width*0.15), int(width*0.25), int(width*0.5), int(width*0.75)]
